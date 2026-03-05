@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PastePort — Your clipboard, everywhere</title>
+  <meta name="description" content="PastePort moves links, text, images and files between your devices in real time. End-to-end encrypted. No cables. No friction.">
+  <meta property="og:title" content="PastePort — Your clipboard, everywhere">
+  <meta property="og:description" content="Share anything between your Android phone, laptop and terminal in seconds. End-to-end encrypted.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://pasteport.app">
+  <meta name="theme-color" content="#4f46e5">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%234f46e5'/><text x='16' y='22' text-anchor='middle' fill='white' font-size='16' font-weight='bold' font-family='system-ui'>P</text></svg>">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container">
+    <nav class="nav" role="navigation" aria-label="Main navigation">
+      <a href="/" class="nav-logo">
+        <span class="logo-mark">P</span>
+        PastePort
+      </a>
+
+      <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="nav-links" aria-label="Toggle navigation">
+        <span class="hamburger"></span>
+      </button>
+
+      <ul class="nav-links" id="nav-links" role="list">
+        <li><a href="#features">Features</a></li>
+        <li><a href="#how-it-works">How it works</a></li>
+        <li><a href="#pricing">Pricing</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+
+      <div class="nav-cta" id="nav-cta">
+        <a href="#pricing" class="btn btn-primary btn-sm">Get started</a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-badge">
+        <span class="dot"></span>
+        Android app &amp; CLI available now
+      </div>
+
+      <h1>Copy here.<br>Paste there.</h1>
+
+      <p class="hero-lead">
+        PastePort moves links, text, images and files between your devices the moment you need them — no cables, no emailing yourself, no cloud uploads.
+      </p>
+
+      <div class="hero-actions">
+        <a href="#" class="btn btn-primary btn-lg">
+          Get the Android App
+        </a>
+        <a href="#" class="btn btn-ghost btn-lg">
+          Chrome Extension — coming soon
+        </a>
+      </div>
+
+      <div class="hero-devices" aria-hidden="true">
+        <div class="device-card">
+          <span class="device-icon">📱</span>
+          <div>
+            <div style="font-size:.7rem;color:var(--ink-muted);font-weight:600;text-transform:uppercase;letter-spacing:.06em">Android</div>
+            <div>My Phone</div>
+          </div>
+        </div>
+
+        <div class="transfer-arrow">
+          <div class="arrow-line"></div>
+          <div class="transfer-label">&lt; 2s</div>
+        </div>
+
+        <div class="device-card">
+          <span class="device-icon">💻</span>
+          <div>
+            <div style="font-size:.7rem;color:var(--ink-muted);font-weight:600;text-transform:uppercase;letter-spacing:.06em">Chrome</div>
+            <div>Work Laptop</div>
+          </div>
+        </div>
+
+        <div class="transfer-arrow">
+          <div class="arrow-line"></div>
+          <div class="transfer-label">&lt; 2s</div>
+        </div>
+
+        <div class="device-card">
+          <span class="device-icon">🖥️</span>
+          <div>
+            <div style="font-size:.7rem;color:var(--ink-muted);font-weight:600;text-transform:uppercase;letter-spacing:.06em">CLI</div>
+            <div>Terminal</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features -->
+  <section class="section section-alt" id="features">
+    <div class="container">
+      <span class="section-label">Features</span>
+      <h2 class="section-title">Everything in one share</h2>
+      <p class="section-lead">Works the way your brain already does — grab something, send it, move on.</p>
+
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon">🔗</div>
+          <h3>Any content type</h3>
+          <p>Links, text snippets, images, and files. If you can share it from an app on Android, you can send it to your other devices.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">🔐</div>
+          <h3>End-to-end encrypted</h3>
+          <p>Your content is encrypted on your device before it goes anywhere. Our servers only ever see ciphertext — we literally cannot read what you're sharing.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">⚡</div>
+          <h3>Arrives in seconds</h3>
+          <p>Real-time delivery over a live connection. Copy on your phone and it's waiting on your laptop before you've switched windows.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">🛠️</div>
+          <h3>For every setup</h3>
+          <p>Android app for your phone. Chrome extension for your browser. A full CLI tool for your terminal. All three talk to each other.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">📂</div>
+          <h3>History and export</h3>
+          <p>Everything you've sent or received is saved locally and in your account. Browse it later, export it, or clear it — it's your data.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">📴</div>
+          <h3>Works offline too</h3>
+          <p>Send to a device that's off right now. PastePort queues the message and delivers it the moment that device comes back online.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How it works -->
+  <section class="section" id="how-it-works">
+    <div class="container">
+      <span class="section-label">How it works</span>
+      <h2 class="section-title">Up and running in minutes</h2>
+      <p class="section-lead">Three steps and your devices are talking to each other.</p>
+
+      <ol class="steps">
+        <li class="step">
+          <div class="step-num">1</div>
+          <div class="step-body">
+            <h3>Install on your devices</h3>
+            <p>Grab the Android app from the Play Store and the Chrome extension from the Web Store. Or use the CLI tool if you live in the terminal.</p>
+          </div>
+        </li>
+
+        <li class="step">
+          <div class="step-num">2</div>
+          <div class="step-body">
+            <h3>Sign in and pair</h3>
+            <p>Create a free account, then pair your devices. Scan a QR code from one device to another, or use a sign-in link — takes about thirty seconds.</p>
+          </div>
+        </li>
+
+        <li class="step">
+          <div class="step-num">3</div>
+          <div class="step-body">
+            <h3>Share anything</h3>
+            <p>Use the Android share sheet, right-click in Chrome, or pipe something into the CLI. Content appears on your other devices immediately.</p>
+          </div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- Security callout -->
+  <section class="section section-dark">
+    <div class="container">
+      <div class="security-grid">
+        <div class="security-content">
+          <span class="section-label">Privacy &amp; Security</span>
+          <h2 class="section-title">We can't read your data.<br>By design.</h2>
+          <p class="section-lead">PastePort uses AES-256-GCM end-to-end encryption. Your encryption key lives on your devices and nowhere else.</p>
+
+          <div class="security-points">
+            <div class="security-point">
+              <span class="check">✓</span>
+              <p><strong>Client-side encryption.</strong> Content is encrypted before it leaves your device. The server receives — and stores — only ciphertext.</p>
+            </div>
+            <div class="security-point">
+              <span class="check">✓</span>
+              <p><strong>Keys never leave your devices.</strong> Your account encryption key is transferred between your own devices via ECDH key exchange. Stori Innovations never holds a copy.</p>
+            </div>
+            <div class="security-point">
+              <span class="check">✓</span>
+              <p><strong>Automatic expiry.</strong> Messages are automatically purged after 7 days (Free) or 30 days (Pro). Or delete everything instantly, anytime you want.</p>
+            </div>
+            <div class="security-point">
+              <span class="check">✓</span>
+              <p><strong>No ads, no tracking, no selling data.</strong> PastePort is a paid utility. Your content is not the product.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="security-visual" aria-hidden="true">
+          <div class="enc-diagram">
+            <div class="enc-step">
+              <div class="label">Your device</div>
+              <div class="value">https://notion.so/my-notes/...</div>
+            </div>
+            <div class="enc-arrow">↓ AES-256-GCM encrypt with your key</div>
+            <div class="enc-step">
+              <div class="label">In transit &amp; at rest</div>
+              <div class="value cipher">U2FsdGVkX1+mK3z8nQ2XvR9L4...</div>
+            </div>
+            <div class="enc-arrow">↓ decrypt on your other device</div>
+            <div class="enc-step">
+              <div class="label">Your other device</div>
+              <div class="value">https://notion.so/my-notes/...</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing -->
+  <section class="section section-alt" id="pricing">
+    <div class="container" style="text-align:center">
+      <span class="section-label">Pricing</span>
+      <h2 class="section-title">Simple plans, no surprises</h2>
+      <p class="section-lead" style="margin-inline:auto">Start free. Upgrade when you need more devices or longer history.</p>
+
+      <div class="plans">
+        <div class="plan">
+          <div class="plan-name">Free</div>
+          <div class="plan-price">$0</div>
+          <div class="plan-desc">Everything you need to get started.</div>
+
+          <ul class="plan-features">
+            <li class="plan-feature">
+              <span class="icon">✓</span>
+              Up to 2 devices
+            </li>
+            <li class="plan-feature">
+              <span class="icon">✓</span>
+              7-day message history
+            </li>
+            <li class="plan-feature">
+              <span class="icon">✓</span>
+              Files up to 1 MB
+            </li>
+            <li class="plan-feature">
+              <span class="icon">✓</span>
+              End-to-end encrypted
+            </li>
+            <li class="plan-feature">
+              <span class="icon">✓</span>
+              History export
+            </li>
+          </ul>
+
+          <a href="#" class="btn btn-outline">Get started free</a>
+        </div>
+
+        <div class="plan featured">
+          <div class="plan-badge">Most popular</div>
+          <div class="plan-name">Pro</div>
+          <div class="plan-price">TBA <span>/ mo</span></div>
+          <div class="plan-desc">For people with more than two devices, or larger files.</div>
+
+          <ul class="plan-features">
+            <li class="plan-feature">
+              <span class="icon">✓</span>
+              Unlimited devices
+            </li>
+            <li class="plan-feature">
+              <span class="icon">✓</span>
+              30-day message history
+            </li>
+            <li class="plan-feature">
+              <span class="icon">✓</span>
+              Files up to 25 MB
+            </li>
+            <li class="plan-feature">
+              <span class="icon">✓</span>
+              End-to-end encrypted
+            </li>
+            <li class="plan-feature">
+              <span class="icon">✓</span>
+              History export
+            </li>
+          </ul>
+
+          <a href="contact.html" class="btn btn-primary">Get in touch</a>
+        </div>
+      </div>
+
+      <p style="margin-top:24px;font-size:.85rem;color:var(--ink-muted)">
+        Pro pricing coming soon. <a href="contact.html">Contact us</a> if you'd like early access.
+      </p>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="/" class="nav-logo">
+          <span class="logo-mark">P</span>
+          PastePort
+        </a>
+        <p>Your paste's passport across devices. Built by <a href="https://storiinnovations.com" style="color:#94a3b8;text-decoration:underline" target="_blank" rel="noopener">Stori Innovations</a>.</p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Product</h4>
+        <ul>
+          <li><a href="#features">Features</a></li>
+          <li><a href="#how-it-works">How it works</a></li>
+          <li><a href="#pricing">Pricing</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Download</h4>
+        <ul>
+          <li><a href="#">Android App</a></li>
+          <li><a href="#">Chrome Extension</a></li>
+          <li><a href="#">CLI Tool</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Legal</h4>
+        <ul>
+          <li><a href="privacy.html">Privacy Policy</a></li>
+          <li><a href="terms.html">Terms of Service</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <span>&copy; 2026 Stori Innovations. All rights reserved.</span>
+      <div style="display:flex;gap:20px">
+        <a href="privacy.html">Privacy</a>
+        <a href="terms.html">Terms</a>
+        <a href="contact.html">Contact</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const toggle = document.getElementById('nav-toggle');
+  const links = document.getElementById('nav-links');
+  const cta = document.getElementById('nav-cta');
+
+  toggle.addEventListener('click', () => {
+    const open = toggle.getAttribute('aria-expanded') === 'true';
+    toggle.setAttribute('aria-expanded', String(!open));
+    links.classList.toggle('open', !open);
+    cta.classList.toggle('open', !open);
+  });
+
+  // Close nav when a link is clicked
+  links.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => {
+      toggle.setAttribute('aria-expanded', 'false');
+      links.classList.remove('open');
+      cta.classList.remove('open');
+    });
+  });
+</script>
+
+</body>
+</html>

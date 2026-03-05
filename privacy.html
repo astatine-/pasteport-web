@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Privacy Policy — PastePort</title>
+  <meta name="description" content="PastePort privacy policy. We designed PastePort so we can't read your content — here's what we actually collect and why.">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%234f46e5'/><text x='16' y='22' text-anchor='middle' fill='white' font-size='16' font-weight='bold' font-family='system-ui'>P</text></svg>">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container">
+    <nav class="nav" role="navigation" aria-label="Main navigation">
+      <a href="/" class="nav-logo">
+        <span class="logo-mark">P</span>
+        PastePort
+      </a>
+
+      <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="nav-links" aria-label="Toggle navigation">
+        <span class="hamburger"></span>
+      </button>
+
+      <ul class="nav-links" id="nav-links" role="list">
+        <li><a href="/#features">Features</a></li>
+        <li><a href="/#pricing">Pricing</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+
+      <div class="nav-cta" id="nav-cta">
+        <a href="/#pricing" class="btn btn-primary btn-sm">Get started</a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<div class="prose-hero">
+  <div class="container">
+    <h1>Privacy Policy</h1>
+    <p>Last updated: 1 March 2026 &mdash; <a href="contact.html">Questions? Get in touch.</a></p>
+  </div>
+</div>
+
+<div class="prose-body">
+  <div class="container">
+    <div class="prose-layout">
+
+      <nav class="prose-nav" aria-label="Page sections">
+        <h4>On this page</h4>
+        <ul>
+          <li><a href="#overview">Overview</a></li>
+          <li><a href="#what-we-collect">What we collect</a></li>
+          <li><a href="#what-we-dont">What we don't collect</a></li>
+          <li><a href="#how-we-use">How we use your data</a></li>
+          <li><a href="#sharing">Sharing your data</a></li>
+          <li><a href="#retention">Data retention</a></li>
+          <li><a href="#security">Security</a></li>
+          <li><a href="#your-rights">Your rights</a></li>
+          <li><a href="#children">Children</a></li>
+          <li><a href="#changes">Changes</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="prose-content">
+
+        <div class="prose-section" id="overview">
+          <h2>Overview</h2>
+          <p>PastePort is built by Stori Innovations ("we", "us", "our"). This policy describes what personal data we collect when you use PastePort, how we use it, and what control you have over it.</p>
+          <p>The short version: we collect the minimum we need to run the service, we cannot read your content because it's end-to-end encrypted, and we don't sell your data or show you ads.</p>
+          <div class="notice-box">
+            <strong>End-to-end encryption means we can't read your content.</strong> Everything you send through PastePort — links, text, images, files — is encrypted on your device before it reaches our servers, using a key that only your devices hold. We store ciphertext and cannot decrypt it.
+          </div>
+        </div>
+
+        <div class="prose-section" id="what-we-collect">
+          <h2>What we collect</h2>
+
+          <h3>Account information</h3>
+          <p>When you create an account we collect:</p>
+          <ul>
+            <li>Your email address (used for authentication and transactional emails like account deletion confirmation)</li>
+            <li>A hashed password if you use email/password sign-in, or your Google account ID if you sign in with Google</li>
+          </ul>
+
+          <h3>Device records</h3>
+          <p>Each device you pair with PastePort gets a record in your account that includes:</p>
+          <ul>
+            <li>A display name (e.g. "My Pixel 8") — you set this yourself and can change it anytime</li>
+            <li>The device type (Android, Chrome extension, CLI)</li>
+            <li>A timestamp for when the device was registered and when it was last active</li>
+            <li>A Firebase Cloud Messaging (FCM) token for push notifications</li>
+          </ul>
+
+          <h3>Encrypted message envelopes</h3>
+          <p>When you send content, we store a message document in Firestore that contains:</p>
+          <ul>
+            <li>An encrypted payload (ciphertext — we cannot read this)</li>
+            <li>Metadata: sender device ID, timestamp, expiry time, content type indicator, and delivery status per device</li>
+          </ul>
+          <p>The content type indicator (e.g. "url", "text", "image") is stored in plaintext in the message envelope. Everything else — the actual URL, text, image or file — is encrypted.</p>
+
+          <h3>Usage and diagnostics</h3>
+          <p>We may collect aggregate, anonymised metrics to understand how the service is being used — for example, the number of messages sent per day or total active devices. These metrics do not identify you individually.</p>
+          <p>If the app crashes, crash reports may be sent to Firebase Crashlytics. These reports contain stack traces and device information (OS version, device model) but not the content of any message.</p>
+
+          <h3>Log data</h3>
+          <p>Our servers record standard access logs: your IP address, request timestamps, and HTTP status codes. These logs are used for security monitoring and are retained for up to 90 days.</p>
+        </div>
+
+        <div class="prose-section" id="what-we-dont">
+          <h2>What we don't collect</h2>
+          <ul>
+            <li>The content of anything you share — links, text, images or files — because it is encrypted before it leaves your device</li>
+            <li>Your contacts, call log, or any data from other apps</li>
+            <li>Your precise location</li>
+            <li>Advertising identifiers</li>
+          </ul>
+          <p>We don't run ads. We don't build advertising profiles. Your data is not shared with third-party advertisers.</p>
+        </div>
+
+        <div class="prose-section" id="how-we-use">
+          <h2>How we use your data</h2>
+          <p>We use the data we collect to:</p>
+          <ul>
+            <li>Operate the PastePort service — routing encrypted messages between your devices, managing authentication, and enforcing plan limits</li>
+            <li>Send transactional emails — account confirmation, pairing link emails, and deletion confirmation. We don't send marketing emails unless you've separately opted in.</li>
+            <li>Diagnose problems and improve reliability using crash reports and aggregate usage metrics</li>
+            <li>Prevent abuse and enforce our Terms of Service</li>
+            <li>Comply with legal obligations</li>
+          </ul>
+        </div>
+
+        <div class="prose-section" id="sharing">
+          <h2>Sharing your data</h2>
+          <p>We do not sell, rent or trade your personal data. We share limited data only in these circumstances:</p>
+
+          <h3>Service providers</h3>
+          <p>PastePort is built on Google Firebase (Firebase Authentication, Cloud Firestore, Cloud Functions, Firebase Cloud Messaging, Firebase Hosting). Google processes data on our behalf under a data processing agreement. See <a href="https://firebase.google.com/support/privacy" target="_blank" rel="noopener">Firebase's privacy information</a>.</p>
+
+          <h3>Legal requirements</h3>
+          <p>We may disclose your data if required to do so by law, court order, or a valid legal process. We will notify you of any such request where we are legally permitted to do so.</p>
+
+          <h3>Business transfers</h3>
+          <p>If Stori Innovations is acquired or merges with another company, your data may be transferred as part of that transaction. We will notify you and you'll have the option to delete your account before any transfer takes effect.</p>
+        </div>
+
+        <div class="prose-section" id="retention">
+          <h2>Data retention</h2>
+          <p>We retain your account information for as long as your account is active. You can delete your account at any time from within the Android app or Chrome extension settings — this permanently deletes your account record, all device records, and all messages from our servers. You'll receive a confirmation email when deletion is complete.</p>
+          <p>Messages are automatically purged from Firestore after they expire:</p>
+          <ul>
+            <li><strong>Free plan:</strong> 7 days from the time they were sent</li>
+            <li><strong>Pro plan:</strong> 30 days from the time they were sent</li>
+          </ul>
+          <p>You can also manually purge all of your messages at any time from your account settings — this deletes them immediately, ahead of the scheduled expiry.</p>
+          <p>Server access logs are retained for up to 90 days and then deleted automatically.</p>
+        </div>
+
+        <div class="prose-section" id="security">
+          <h2>Security</h2>
+          <p>Security is central to PastePort's design rather than bolted on. Key measures:</p>
+          <ul>
+            <li><strong>End-to-end encryption.</strong> All content payloads are encrypted with AES-256-GCM using an account-level symmetric key (ASK). The ASK is generated on your devices, exchanged between them via an ECDH (X25519) key exchange during pairing, and never sent to or stored on our servers.</li>
+            <li><strong>TLS in transit.</strong> All communication between your devices and our servers uses TLS.</li>
+            <li><strong>Authentication.</strong> Accounts are authenticated via Firebase Auth. Admin access to our internal systems requires multi-factor authentication.</li>
+            <li><strong>Access controls.</strong> Firestore security rules ensure that a device can only read messages belonging to its own account.</li>
+          </ul>
+          <p>No security system is perfect. If you discover a vulnerability, please contact us at <a href="mailto:security@pasteport.app">security@pasteport.app</a>.</p>
+        </div>
+
+        <div class="prose-section" id="your-rights">
+          <h2>Your rights</h2>
+          <p>Depending on where you live, you may have the following rights regarding your personal data:</p>
+          <ul>
+            <li><strong>Access.</strong> Request a copy of the personal data we hold about you.</li>
+            <li><strong>Correction.</strong> Ask us to correct inaccurate data (e.g. your email address).</li>
+            <li><strong>Deletion.</strong> Delete your account and all associated data at any time via the app, or by contacting us. Message content is encrypted and only meaningful to you — deleting your account also makes any remaining ciphertext permanently unreadable.</li>
+            <li><strong>Portability.</strong> Export your message history as a ZIP archive from within any PastePort client before deleting your account.</li>
+            <li><strong>Objection / restriction.</strong> Object to or restrict certain processing where applicable under local law.</li>
+          </ul>
+          <p>To exercise any of these rights, email us at <a href="mailto:privacy@pasteport.app">privacy@pasteport.app</a>. We'll respond within 30 days.</p>
+          <p>If you're in the EU or UK, you have the right to lodge a complaint with your local data protection authority.</p>
+        </div>
+
+        <div class="prose-section" id="children">
+          <h2>Children</h2>
+          <p>PastePort is not intended for use by children under 13, or under 16 in the EU. We do not knowingly collect personal data from children. If you believe a child has created an account, please contact us at <a href="mailto:privacy@pasteport.app">privacy@pasteport.app</a> and we will delete it promptly.</p>
+        </div>
+
+        <div class="prose-section" id="changes">
+          <h2>Changes to this policy</h2>
+          <p>If we make material changes to this policy, we'll notify you by email or with a notice in the app before the changes take effect. The date at the top of this page always reflects when it was last updated.</p>
+        </div>
+
+        <div class="prose-section" id="contact">
+          <h2>Contact</h2>
+          <p>Questions about this policy? Reach us at <a href="mailto:privacy@pasteport.app">privacy@pasteport.app</a> or through our <a href="contact.html">contact page</a>.</p>
+          <p>
+            Stori Innovations<br>
+            <a href="mailto:privacy@pasteport.app">privacy@pasteport.app</a>
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-bottom">
+      <span>&copy; 2026 Stori Innovations. All rights reserved.</span>
+      <div style="display:flex;gap:20px">
+        <a href="privacy.html">Privacy</a>
+        <a href="terms.html">Terms</a>
+        <a href="contact.html">Contact</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const toggle = document.getElementById('nav-toggle');
+  const links = document.getElementById('nav-links');
+  const cta = document.getElementById('nav-cta');
+  toggle.addEventListener('click', () => {
+    const open = toggle.getAttribute('aria-expanded') === 'true';
+    toggle.setAttribute('aria-expanded', String(!open));
+    links.classList.toggle('open', !open);
+    cta.classList.toggle('open', !open);
+  });
+</script>
+
+</body>
+</html>
