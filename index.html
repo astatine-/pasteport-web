@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>PastePort — Your clipboard, everywhere</title>
-  <meta name="description" content="PastePort moves links, text, images and files between your devices in real time. End-to-end encrypted. No cables. No friction.">
+  <meta name="description" content="PastePort shares links, text, images and files between your devices in real time. End-to-end encrypted. No cables. No friction.">
   <meta property="og:title" content="PastePort — Your clipboard, everywhere">
   <meta property="og:description" content="Share anything between your Android phone, laptop and terminal in seconds. End-to-end encrypted.">
   <meta property="og:type" content="website">
@@ -21,6 +21,7 @@
       <a href="/" class="nav-logo">
         <span class="logo-mark">P</span>
         PastePort
+        <span class="beta-tag">Beta</span>
       </a>
 
       <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="nav-links" aria-label="Toggle navigation">
@@ -30,6 +31,7 @@
       <ul class="nav-links" id="nav-links" role="list">
         <li><a href="#features">Features</a></li>
         <li><a href="#how-it-works">How it works</a></li>
+        <li><a href="#download">Download</a></li>
         <li><a href="#pricing">Pricing</a></li>
         <li><a href="contact.html">Contact</a></li>
       </ul>
@@ -54,14 +56,14 @@
       <h1>Copy here.<br>Paste there.</h1>
 
       <p class="hero-lead">
-        PastePort moves links, text, images and files between your devices the moment you need them — no cables, no emailing yourself, no cloud uploads.
+        PastePort shares links, text, images and files between your devices the moment you need them — no cables, no emailing yourself, no cloud uploads.
       </p>
 
       <div class="hero-actions">
-        <a href="#" class="btn btn-primary btn-lg">
+        <a href="https://play.google.com/store/apps/details?id=app.pasteport" class="btn btn-primary btn-lg" target="_blank" rel="noopener">
           Get the Android App
         </a>
-        <a href="#" class="btn btn-ghost btn-lg">
+        <a href="https://chrome.google.com/webstore/detail/pasteport" class="btn btn-ghost btn-lg" target="_blank" rel="noopener">
           Add to Chrome
         </a>
       </div>
@@ -183,6 +185,105 @@
           </div>
         </li>
       </ol>
+    </div>
+  </section>
+
+  <!-- Download / Get PastePort -->
+  <section class="section section-alt" id="download">
+    <div class="container">
+      <span class="section-label">Download</span>
+      <h2 class="section-title">Get PastePort on your devices</h2>
+      <p class="section-lead">Available on Android, Chrome, and Mac CLI. More platforms coming soon.</p>
+
+      <div class="platform-grid">
+
+        <!-- Android -->
+        <div class="platform-card">
+          <div class="platform-header">
+            <span class="platform-icon">📱</span>
+            <div>
+              <div class="platform-name">Android</div>
+              <span class="platform-status available">Available</span>
+            </div>
+          </div>
+          <p class="platform-desc">Share anything from your Android phone to all your other devices via the share sheet.</p>
+          <a href="https://play.google.com/store/apps/details?id=app.pasteport" class="btn btn-primary" target="_blank" rel="noopener">
+            Download on Google Play
+          </a>
+        </div>
+
+        <!-- Mac CLI (Homebrew) -->
+        <div class="platform-card">
+          <div class="platform-header">
+            <span class="platform-icon">🖥️</span>
+            <div>
+              <div class="platform-name">CLI — macOS</div>
+              <span class="platform-status available">Available</span>
+            </div>
+          </div>
+          <p class="platform-desc">Install with Homebrew and use PastePort right from your terminal.</p>
+          <div class="code-block">
+            <span class="code-prompt">$</span>
+            <code>brew install pasteport</code>
+          </div>
+          <p class="platform-sub">Then run <code class="inline-code">pasteport auth login</code> to get started.</p>
+        </div>
+
+        <!-- Chrome Extension -->
+        <div class="platform-card">
+          <div class="platform-header">
+            <span class="platform-icon">🌐</span>
+            <div>
+              <div class="platform-name">Chrome Extension</div>
+              <span class="platform-status available">Available</span>
+            </div>
+          </div>
+          <p class="platform-desc">Right-click any link, image or selected text in Chrome to send it instantly to your other devices.</p>
+          <a href="https://chrome.google.com/webstore/detail/pasteport" class="btn btn-primary" target="_blank" rel="noopener">
+            Add to Chrome
+          </a>
+        </div>
+
+        <!-- Windows CLI — Coming Soon -->
+        <div class="platform-card coming-soon">
+          <div class="platform-header">
+            <span class="platform-icon">🖥️</span>
+            <div>
+              <div class="platform-name">CLI — Windows</div>
+              <span class="platform-status soon">Coming soon</span>
+            </div>
+          </div>
+          <p class="platform-desc">Native Windows CLI support is in development. Sign up to be notified when it launches.</p>
+          <a href="contact.html" class="btn btn-outline">Notify me</a>
+        </div>
+
+        <!-- Mac Native — Coming Soon -->
+        <div class="platform-card coming-soon">
+          <div class="platform-header">
+            <span class="platform-icon">🍎</span>
+            <div>
+              <div class="platform-name">macOS — Native App</div>
+              <span class="platform-status soon">Coming soon</span>
+            </div>
+          </div>
+          <p class="platform-desc">A native menu-bar app for macOS is on the roadmap. No terminal required.</p>
+          <a href="contact.html" class="btn btn-outline">Notify me</a>
+        </div>
+
+        <!-- Windows Native — Coming Soon -->
+        <div class="platform-card coming-soon">
+          <div class="platform-header">
+            <span class="platform-icon">🪟</span>
+            <div>
+              <div class="platform-name">Windows — Native App</div>
+              <span class="platform-status soon">Coming soon</span>
+            </div>
+          </div>
+          <p class="platform-desc">A native Windows desktop app is planned. Stay tuned.</p>
+          <a href="contact.html" class="btn btn-outline">Notify me</a>
+        </div>
+
+      </div>
     </div>
   </section>
 
@@ -312,6 +413,15 @@
       <p style="margin-top:24px;font-size:.85rem;color:var(--ink-muted)">
         Pro pricing coming soon. <a href="contact.html">Get in touch</a> if you'd like early access.
       </p>
+
+      <div class="beta-callout">
+        <div class="beta-callout-icon">🧪</div>
+        <div class="beta-callout-body">
+          <h3>Interested in Beta access?</h3>
+          <p>We're looking for early participants to help shape PastePort. Beta users receive a free plan with <strong>4 devices</strong> and <strong>14-day message history</strong> — twice as generous as the standard free tier, at absolutely no cost.</p>
+          <a href="contact.html" class="btn btn-primary">Apply for Beta access</a>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -333,6 +443,7 @@
         <ul>
           <li><a href="#features">Features</a></li>
           <li><a href="#how-it-works">How it works</a></li>
+          <li><a href="#download">Download</a></li>
           <li><a href="#pricing">Pricing</a></li>
         </ul>
       </div>
@@ -340,9 +451,9 @@
       <div class="footer-col">
         <h4>Download</h4>
         <ul>
-          <li><a href="#">Android App</a></li>
-          <li><a href="#">Chrome Extension</a></li>  <!-- add Web Store link -->
-          <li><a href="#">CLI Tool</a></li>
+          <li><a href="https://play.google.com/store/apps/details?id=app.pasteport" target="_blank" rel="noopener">Android App</a></li>
+          <li><a href="https://chrome.google.com/webstore/detail/pasteport" target="_blank" rel="noopener">Chrome Extension</a></li>
+          <li><a href="#download">CLI (macOS)</a></li>
         </ul>
       </div>
 
