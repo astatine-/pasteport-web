@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Delete My Account or Data — PastePort</title>
+  <meta name="description" content="Submit a request to delete your PastePort account and/or personal data. We process all requests within 30 days.">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%234f46e5'/><text x='16' y='22' text-anchor='middle' fill='white' font-size='16' font-weight='bold' font-family='system-ui'>P</text></svg>">
+  <style>
+    .delete-hero {
+      background: #fff5f5;
+      border-bottom: 1px solid #fecaca;
+      padding-block: 56px 48px;
+    }
+    .delete-hero h1 { font-size: clamp(1.8rem, 4vw, 2.4rem); margin-bottom: 8px; }
+    .delete-hero p { color: var(--ink-muted); font-size: .95rem; }
+
+    .request-type-group {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+
+    .radio-card {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      border: 1.5px solid var(--border-dark);
+      border-radius: var(--radius);
+      padding: 16px;
+      cursor: pointer;
+      transition: border-color .15s, background .15s;
+      background: var(--white);
+    }
+    .radio-card:has(input:checked) {
+      border-color: var(--accent);
+      background: var(--accent-bg);
+    }
+    .radio-card input[type="radio"] {
+      margin-top: 3px;
+      flex-shrink: 0;
+      accent-color: var(--accent);
+      width: 16px;
+      height: 16px;
+    }
+    .radio-card-body strong {
+      display: block;
+      font-size: .9rem;
+      color: var(--ink);
+      margin-bottom: 2px;
+    }
+    .radio-card-body span {
+      font-size: .82rem;
+      color: var(--ink-muted);
+      line-height: 1.5;
+    }
+
+    .confirm-check {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      padding: 14px 16px;
+      background: #fff5f5;
+      border: 1.5px solid #fecaca;
+      border-radius: var(--radius);
+      margin-bottom: 20px;
+      cursor: pointer;
+    }
+    .confirm-check input[type="checkbox"] {
+      margin-top: 3px;
+      flex-shrink: 0;
+      accent-color: #dc2626;
+      width: 16px;
+      height: 16px;
+    }
+    .confirm-check span {
+      font-size: .875rem;
+      color: var(--ink-body);
+      line-height: 1.5;
+    }
+
+    .form-success {
+      display: none;
+      background: var(--green-bg);
+      border: 1.5px solid var(--green);
+      border-radius: var(--radius-lg);
+      padding: 28px;
+      text-align: center;
+      color: var(--ink);
+    }
+    .form-success h3 { color: var(--green); margin-bottom: 8px; font-size: 1.1rem; }
+    .form-success p { color: var(--ink-muted); font-size: .9rem; margin-bottom: 0; }
+
+    .data-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: .875rem;
+      margin-block: 12px;
+    }
+    .data-table th {
+      text-align: left;
+      font-weight: 700;
+      font-size: .75rem;
+      text-transform: uppercase;
+      letter-spacing: .07em;
+      color: var(--ink-muted);
+      padding: 8px 12px;
+      border-bottom: 1.5px solid var(--border);
+    }
+    .data-table td {
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--border);
+      color: var(--ink-body);
+      vertical-align: top;
+    }
+    .data-table tr:last-child td { border-bottom: none; }
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      font-size: .7rem;
+      font-weight: 600;
+      letter-spacing: .04em;
+      padding: 2px 8px;
+      border-radius: 99px;
+    }
+    .tag-del { background: #fee2e2; color: #b91c1c; }
+    .tag-anon { background: #fef9c3; color: #92400e; }
+
+    .info-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 20px;
+      margin-bottom: 20px;
+    }
+    .info-card h4 {
+      font-size: .875rem;
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: 6px;
+    }
+    .info-card p {
+      font-size: .875rem;
+      color: var(--ink-muted);
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    .btn-danger {
+      background: #dc2626;
+      color: var(--white);
+      border-color: #dc2626;
+    }
+    .btn-danger:hover {
+      background: #b91c1c;
+      border-color: #b91c1c;
+      box-shadow: 0 4px 14px rgba(220,38,38,.3);
+    }
+    .btn-danger:disabled {
+      opacity: .45;
+      cursor: not-allowed;
+      transform: none;
+      box-shadow: none;
+    }
+
+    @media (max-width: 768px) {
+      .delete-grid { grid-template-columns: 1fr !important; gap: 40px !important; padding-block: 48px !important; }
+    }
+  </style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container">
+    <nav class="nav" role="navigation" aria-label="Main navigation">
+      <a href="/" class="nav-logo">
+        <span class="logo-mark">P</span>
+        PastePort
+      </a>
+
+      <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="nav-links" aria-label="Toggle navigation">
+        <span class="hamburger"></span>
+      </button>
+
+      <ul class="nav-links" id="nav-links" role="list">
+        <li><a href="/#features">Features</a></li>
+        <li><a href="/#pricing">Pricing</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+
+      <div class="nav-cta" id="nav-cta">
+        <a href="/#pricing" class="btn btn-primary btn-sm">Get started</a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<div class="delete-hero">
+  <div class="container">
+    <h1>Delete My Account or Data</h1>
+    <p>Submit a deletion request below. All requests are processed within <strong>30 days</strong>. You do not need to be logged in.</p>
+  </div>
+</div>
+
+<main>
+  <div class="container">
+    <div class="delete-grid" style="display:grid;grid-template-columns:1fr 1.5fr;gap:64px;align-items:start;padding-block:64px">
+
+      <!-- Info column -->
+      <div>
+        <h2 style="font-size:1.2rem;margin-bottom:16px">What data we hold</h2>
+        <p style="font-size:.9rem;color:var(--ink-muted);margin-bottom:16px;line-height:1.6">
+          PastePort is designed to minimise the data we hold. Here is a complete list of what is stored on our servers and what happens when you submit a deletion request.
+        </p>
+
+        <table class="data-table" aria-label="Data we store and deletion outcome">
+          <thead>
+            <tr>
+              <th>Data</th>
+              <th>On deletion</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Email address<br><span style="font-size:.8rem;color:var(--ink-muted)">Used to identify your account</span></td>
+              <td><span class="tag tag-del">Deleted</span></td>
+            </tr>
+            <tr>
+              <td>Encrypted message payloads<br><span style="font-size:.8rem;color:var(--ink-muted)">Content is E2E-encrypted; we cannot read it</span></td>
+              <td><span class="tag tag-del">Deleted</span></td>
+            </tr>
+            <tr>
+              <td>Device registration tokens<br><span style="font-size:.8rem;color:var(--ink-muted)">Used to route messages to your devices</span></td>
+              <td><span class="tag tag-del">Deleted</span></td>
+            </tr>
+            <tr>
+              <td>Subscription / billing records<br><span style="font-size:.8rem;color:var(--ink-muted)">Only if you have a paid plan</span></td>
+              <td><span class="tag tag-anon">Anonymised</span></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <p style="font-size:.78rem;color:var(--ink-muted);margin-top:8px;line-height:1.5">
+          Billing records are anonymised (not deleted) where required for legal and tax compliance. No personal identifiers remain in anonymised records.
+        </p>
+
+        <div class="info-card" style="margin-top:24px">
+          <h4>Note on encrypted content</h4>
+          <p>Your encryption key never leaves your devices. Even before deletion, the server cannot read any content you have shared. Messages are also automatically purged after 7 days (Free) or 30 days (Pro).</p>
+        </div>
+
+        <div class="info-card">
+          <h4>Processing time</h4>
+          <p>We will confirm receipt by email and complete your request within <strong>30 days</strong>. For urgent requests, email <a href="mailto:privacy@pasteport.app">privacy@pasteport.app</a> directly.</p>
+        </div>
+
+        <div class="info-card">
+          <h4>Need help instead?</h4>
+          <p>If your account has a problem you'd like us to fix, <a href="contact.html">contact support</a> — we're happy to help before you go.</p>
+        </div>
+      </div>
+
+      <!-- Form column -->
+      <div class="contact-form-wrap">
+        <h2 style="font-size:1.3rem;margin-bottom:6px">Submit a deletion request</h2>
+        <p style="font-size:.875rem;color:var(--ink-muted);margin-bottom:28px">
+          No login required. We'll verify your identity via the email address associated with your account.
+        </p>
+
+        <div class="form-success" id="form-success" role="alert">
+          <h3>Request received</h3>
+          <p>We'll send a confirmation to your email address and complete your request within 30 days.<br>
+          If you don't hear from us within 2 business days, email <a href="mailto:privacy@pasteport.app">privacy@pasteport.app</a>.</p>
+        </div>
+
+        <form id="delete-form" novalidate>
+
+          <div class="form-group">
+            <label for="email">Email address on your PastePort account <span style="color:#dc2626">*</span></label>
+            <input type="email" id="email" name="email" placeholder="you@example.com" autocomplete="email" required>
+          </div>
+
+          <div class="form-group">
+            <label>What would you like to delete? <span style="color:#dc2626">*</span></label>
+            <div class="request-type-group" role="radiogroup" aria-label="Deletion request type">
+              <label class="radio-card">
+                <input type="radio" name="request_type" value="account_and_data" required>
+                <div class="radio-card-body">
+                  <strong>Delete my account and all data</strong>
+                  <span>Your account, all encrypted messages, and device registrations will be permanently deleted. You will not be able to sign in again with this email.</span>
+                </div>
+              </label>
+              <label class="radio-card">
+                <input type="radio" name="request_type" value="data_only">
+                <div class="radio-card-body">
+                  <strong>Delete my data only (keep my account)</strong>
+                  <span>All messages and device registrations are deleted, but your account (email address) is retained so you can continue using PastePort.</span>
+                </div>
+              </label>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="notes">Additional notes <span style="color:var(--ink-muted);font-weight:400">(optional)</span></label>
+            <textarea id="notes" name="notes" rows="3" placeholder="Any additional context, e.g. a specific device or time range…"></textarea>
+          </div>
+
+          <label class="confirm-check" id="confirm-label">
+            <input type="checkbox" id="confirm" name="confirm" required>
+            <span>I understand this action is permanent and cannot be undone. Data that has been deleted cannot be recovered.</span>
+          </label>
+
+          <button type="submit" class="btn btn-danger" id="submit-btn" style="width:100%;justify-content:center" disabled>
+            Submit deletion request
+          </button>
+
+          <p class="form-note" style="margin-top:14px">
+            By submitting this form you confirm that you are the account holder. We'll verify your identity before processing the request. See our <a href="privacy.html">Privacy Policy</a> for full details.
+          </p>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-bottom">
+      <span>&copy; 2026 Stori Innovations. All rights reserved.</span>
+      <div style="display:flex;gap:20px">
+        <a href="privacy.html">Privacy</a>
+        <a href="terms.html">Terms</a>
+        <a href="contact.html">Contact</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Nav toggle
+  const toggle = document.getElementById('nav-toggle');
+  const links = document.getElementById('nav-links');
+  const cta = document.getElementById('nav-cta');
+  toggle.addEventListener('click', () => {
+    const open = toggle.getAttribute('aria-expanded') === 'true';
+    toggle.setAttribute('aria-expanded', String(!open));
+    links.classList.toggle('open', !open);
+    cta.classList.toggle('open', !open);
+  });
+
+  // Enable submit only when checkbox is ticked
+  const confirmBox = document.getElementById('confirm');
+  const submitBtn = document.getElementById('submit-btn');
+  confirmBox.addEventListener('change', () => {
+    submitBtn.disabled = !confirmBox.checked;
+  });
+
+  // Form submission — mailto fallback
+  const form = document.getElementById('delete-form');
+  const success = document.getElementById('form-success');
+
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    if (!form.checkValidity()) {
+      form.reportValidity();
+      return;
+    }
+
+    const email = form.email.value.trim();
+    const requestType = form.request_type.value;
+    const notes = form.notes.value.trim();
+
+    const typeLabel = requestType === 'account_and_data'
+      ? 'Delete account and all data'
+      : 'Delete data only (keep account)';
+
+    const body = [
+      'PASTEPORT DELETION REQUEST',
+      '===========================',
+      '',
+      'Account email: ' + email,
+      'Request type: ' + typeLabel,
+      '',
+      notes ? 'Additional notes:\n' + notes : '',
+    ].filter(Boolean).join('\n');
+
+    const mailto = 'mailto:privacy@pasteport.app'
+      + '?subject=' + encodeURIComponent('[PastePort] Account/Data Deletion Request')
+      + '&body=' + encodeURIComponent(body);
+
+    window.location.href = mailto;
+
+    setTimeout(() => {
+      form.style.display = 'none';
+      success.style.display = 'block';
+    }, 300);
+  });
+</script>
+
+</body>
+</html>
