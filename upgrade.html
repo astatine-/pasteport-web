@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Upgrade to Pro — PastePort</title>
+  <meta name="description" content="Upgrade to PastePort Pro for more devices, longer history, and larger file transfers.">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%234f46e5'/><text x='16' y='22' text-anchor='middle' fill='white' font-size='16' font-weight='bold' font-family='system-ui'>P</text></svg>">
+  <style>
+    /* ── Upgrade-page-specific styles ── */
+
+    .upgrade-hero {
+      padding-block: 56px 48px;
+      text-align: center;
+    }
+    .upgrade-hero h1 {
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      margin-bottom: 12px;
+    }
+    .upgrade-hero p {
+      font-size: 1.05rem;
+      color: var(--ink-muted);
+      max-width: 44ch;
+      margin-inline: auto;
+    }
+
+    .upgrade-body {
+      padding-block: 0 72px;
+    }
+
+    /* Notice shown when no ?uid= in URL */
+    .anon-notice {
+      display: none;
+      background: var(--accent-bg);
+      border: 1px solid #c7d2fe;
+      border-radius: var(--radius);
+      padding: 12px 18px;
+      font-size: .875rem;
+      color: #3730a3;
+      text-align: center;
+      margin-bottom: 32px;
+      max-width: 560px;
+      margin-inline: auto;
+    }
+
+    /* Error banner */
+    .error-banner {
+      display: none;
+      background: #fef2f2;
+      border: 1px solid #fecaca;
+      border-radius: var(--radius);
+      padding: 12px 18px;
+      font-size: .875rem;
+      color: #dc2626;
+      text-align: center;
+      margin-bottom: 24px;
+      max-width: 560px;
+      margin-inline: auto;
+    }
+
+    /* Loading spinner */
+    .upgrade-spinner {
+      display: flex;
+      justify-content: center;
+      padding: 48px 0;
+    }
+    .spin {
+      width: 36px;
+      height: 36px;
+      border: 3px solid var(--border-dark);
+      border-top-color: var(--accent);
+      border-radius: 50%;
+      animation: spin .7s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* Price sub-label (per-month equiv + savings badge) */
+    .plan-price-period {
+      font-size: .8rem;
+      color: var(--ink-muted);
+      margin-top: 6px;
+      min-height: 1.2em;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      justify-content: center;
+    }
+
+    .save-badge {
+      display: inline-block;
+      background: #dcfce7;
+      color: #15803d;
+      font-size: .65rem;
+      font-weight: 700;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      padding: 2px 8px;
+      border-radius: 99px;
+    }
+
+    /* Success state */
+    .upgrade-success {
+      display: none;
+      text-align: center;
+      padding: 40px 0;
+    }
+    .success-icon {
+      width: 68px;
+      height: 68px;
+      background: #dcfce7;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 20px;
+    }
+    .upgrade-success h2 {
+      font-size: 1.8rem;
+      margin-bottom: 10px;
+    }
+    .upgrade-success p {
+      font-size: .95rem;
+      color: var(--ink-muted);
+      max-width: 38ch;
+      margin-inline: auto;
+      line-height: 1.6;
+    }
+  </style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container">
+    <nav class="nav" role="navigation" aria-label="Main navigation">
+      <a href="/" class="nav-logo">
+        <span class="logo-mark">P</span>
+        PastePort
+      </a>
+
+      <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="nav-links" aria-label="Toggle navigation">
+        <span class="hamburger"></span>
+      </button>
+
+      <ul class="nav-links" id="nav-links" role="list">
+        <li><a href="/#features">Features</a></li>
+        <li><a href="/#pricing">Pricing</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+
+      <div class="nav-cta" id="nav-cta">
+        <a href="/#pricing" class="btn btn-primary btn-sm">Get started</a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="upgrade-hero section-alt">
+    <div class="container">
+      <span class="section-label">Upgrade</span>
+      <h1>Go Pro</h1>
+      <p>More devices, longer history, and larger file transfers — on every platform you use.</p>
+    </div>
+  </div>
+
+  <div class="upgrade-body">
+    <div class="container">
+
+      <p class="anon-notice" id="anon-notice">
+        Open this page from the PastePort extension or Android app to automatically link your purchase to your account.
+      </p>
+
+      <p class="error-banner" id="error-banner"></p>
+
+      <div class="upgrade-spinner" id="spinner">
+        <div class="spin"></div>
+      </div>
+
+      <div id="cards" style="display:none">
+        <div class="plans">
+
+          <!-- Monthly -->
+          <div class="plan" id="card-monthly">
+            <div class="plan-name">Monthly</div>
+            <div class="plan-price">$<span id="monthly-price">—</span></div>
+            <div class="plan-price-period">per month</div>
+            <div class="plan-desc">All Pro features, cancel any time.</div>
+            <ul class="plan-features">
+              <li class="plan-feature"><span class="icon">✓</span> Up to 10 devices</li>
+              <li class="plan-feature"><span class="icon">✓</span> 90-day history</li>
+              <li class="plan-feature"><span class="icon">✓</span> Files up to 25 MB</li>
+              <li class="plan-feature"><span class="icon">✓</span> All platforms</li>
+              <li class="plan-feature"><span class="icon">✓</span> End-to-end encrypted</li>
+            </ul>
+            <button class="btn btn-outline" id="btn-monthly" disabled>Subscribe monthly</button>
+          </div>
+
+          <!-- Annual -->
+          <div class="plan featured" id="card-annual">
+            <div class="plan-badge">Best value</div>
+            <div class="plan-name">Annual</div>
+            <div class="plan-price">$<span id="annual-price">—</span></div>
+            <div class="plan-price-period" id="annual-period">per year</div>
+            <div class="plan-desc">Everything in Monthly, billed once a year.</div>
+            <ul class="plan-features">
+              <li class="plan-feature"><span class="icon">✓</span> Up to 10 devices</li>
+              <li class="plan-feature"><span class="icon">✓</span> 90-day history</li>
+              <li class="plan-feature"><span class="icon">✓</span> Files up to 25 MB</li>
+              <li class="plan-feature"><span class="icon">✓</span> All platforms</li>
+              <li class="plan-feature"><span class="icon">✓</span> End-to-end encrypted</li>
+            </ul>
+            <button class="btn btn-primary" id="btn-annual" disabled>Subscribe annually</button>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="upgrade-success" id="success">
+        <div class="success-icon">
+          <svg width="34" height="34" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M5 13l4 4L19 7" stroke="#16a34a" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <h2>You're Pro!</h2>
+        <p>Your subscription is active. Open PastePort on any of your devices to start using your Pro features.</p>
+      </div>
+
+    </div>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="/" class="nav-logo">
+          <img src="icon-192.png" alt="" class="nav-logo-img" width="26" height="26">
+          PastePort
+        </a>
+        <p>Your paste's passport across devices. Built by <a href="https://storiinnovations.com" style="color:#94a3b8;text-decoration:underline" target="_blank" rel="noopener">Stori Innovations</a>.</p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Product</h4>
+        <ul>
+          <li><a href="/#features">Features</a></li>
+          <li><a href="/#how-it-works">How it works</a></li>
+          <li><a href="/#download">Download</a></li>
+          <li><a href="/#pricing">Pricing</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Download</h4>
+        <ul>
+          <li><a href="https://play.google.com/store/apps/details?id=app.pasteport" target="_blank" rel="noopener">Android App</a></li>
+          <li><a href="https://chrome.google.com/webstore/detail/pasteport" target="_blank" rel="noopener">Chrome Extension</a></li>
+          <li><a href="/#download">CLI (macOS)</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Legal</h4>
+        <ul>
+          <li><a href="privacy.html">Privacy Policy</a></li>
+          <li><a href="terms.html">Terms of Service</a></li>
+          <li><a href="forgetme.html">Delete My Data</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <span>&copy; 2026 Stori Innovations. All rights reserved.</span>
+      <div style="display:flex;gap:20px">
+        <a href="privacy.html">Privacy</a>
+        <a href="terms.html">Terms</a>
+        <a href="forgetme.html">Delete My Data</a>
+        <a href="contact.html">Contact</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Mobile nav toggle (matches all other pages)
+  const toggle = document.getElementById('nav-toggle');
+  const links  = document.getElementById('nav-links');
+  const cta    = document.getElementById('nav-cta');
+  toggle.addEventListener('click', () => {
+    const open = toggle.getAttribute('aria-expanded') === 'true';
+    toggle.setAttribute('aria-expanded', String(!open));
+    links.classList.toggle('open', !open);
+    cta.classList.toggle('open', !open);
+  });
+  links.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => {
+      toggle.setAttribute('aria-expanded', 'false');
+      links.classList.remove('open');
+      cta.classList.remove('open');
+    });
+  });
+</script>
+
+<script type="module">
+  // Replace with the actual RC Web (Paddle) platform API key from the RC dashboard.
+  // This is a publishable key — it is safe to include in client-side JS.
+  const RC_WEB_API_KEY = 'YOUR_RC_WEB_API_KEY'
+
+  // ── DOM refs ──────────────────────────────────────────────────────
+  const spinnerEl    = document.getElementById('spinner')
+  const cardsEl      = document.getElementById('cards')
+  const successEl    = document.getElementById('success')
+  const errorBanner  = document.getElementById('error-banner')
+  const anonNotice   = document.getElementById('anon-notice')
+  const btnMonthly   = document.getElementById('btn-monthly')
+  const btnAnnual    = document.getElementById('btn-annual')
+  const monthlyPrice = document.getElementById('monthly-price')
+  const annualPrice  = document.getElementById('annual-price')
+  const annualPeriod = document.getElementById('annual-period')
+
+  // ── State ─────────────────────────────────────────────────────────
+  let monthlyPkg = null
+  let annualPkg  = null
+
+  function showSpinner() {
+    spinnerEl.style.display = 'flex'
+    cardsEl.style.display   = 'none'
+    successEl.style.display = 'none'
+  }
+  function showCards() {
+    spinnerEl.style.display = 'none'
+    cardsEl.style.display   = 'block'
+    successEl.style.display = 'none'
+  }
+  function showSuccess() {
+    spinnerEl.style.display = 'none'
+    cardsEl.style.display   = 'none'
+    successEl.style.display = 'block'
+  }
+
+  function showError(msg) {
+    errorBanner.textContent    = msg
+    errorBanner.style.display  = 'block'
+  }
+  function clearError() {
+    errorBanner.textContent    = ''
+    errorBanner.style.display  = 'none'
+  }
+
+  function setPurchasing(busy) {
+    btnMonthly.disabled = busy || !monthlyPkg
+    btnAnnual.disabled  = busy || !annualPkg
+    if (busy) {
+      btnMonthly.textContent = 'Please wait…'
+      btnAnnual.textContent  = 'Please wait…'
+    } else {
+      btnMonthly.textContent = 'Subscribe monthly'
+      btnAnnual.textContent  = 'Subscribe annually'
+    }
+  }
+
+  // Format amountMicros to a plain number string (currency symbol shown separately)
+  function fmtPrice(amountMicros, currency) {
+    const amount = amountMicros / 1_000_000
+    try {
+      return new Intl.NumberFormat(undefined, {
+        style: 'currency',
+        currency,
+        minimumFractionDigits: 0,
+        maximumFractionDigits: 2,
+      }).format(amount)
+        .replace(/[^\d.,]/g, '')  // strip currency symbol — already shown as "$" in HTML
+        .trim()
+    } catch {
+      return amount.toFixed(2)
+    }
+  }
+
+  // ── Init ──────────────────────────────────────────────────────────
+  async function init() {
+    showSpinner()
+
+    const uid = new URLSearchParams(window.location.search).get('uid') ?? null
+    if (!uid) anonNotice.style.display = 'block'
+
+    let purchases
+    try {
+      const { Purchases } = await import('https://esm.sh/@revenuecat/purchases-js')
+      purchases = uid
+        ? Purchases.configure(RC_WEB_API_KEY, uid)
+        : Purchases.configure(RC_WEB_API_KEY)
+    } catch (err) {
+      showError('Failed to load billing library. Please refresh the page or try again later.')
+      showCards()
+      console.error('[upgrade] RC SDK load failed', err)
+      return
+    }
+
+    let offerings
+    try {
+      offerings = await purchases.getOfferings()
+    } catch (err) {
+      showError('Could not load pricing. Please refresh the page or try again.')
+      showCards()
+      console.error('[upgrade] getOfferings failed', err)
+      return
+    }
+
+    const current = offerings.current
+    if (!current) {
+      showError('No offerings are currently available. Please try again later.')
+      showCards()
+      return
+    }
+
+    monthlyPkg = current.monthly ?? null
+    annualPkg  = current.annual  ?? null
+
+    // Populate monthly card
+    if (monthlyPkg) {
+      const p = monthlyPkg.webBillingProduct?.currentPrice
+      if (p) monthlyPrice.textContent = fmtPrice(p.amountMicros, p.currency)
+      btnMonthly.disabled = false
+    }
+
+    // Populate annual card + compute savings vs monthly
+    if (annualPkg) {
+      const p = annualPkg.webBillingProduct?.currentPrice
+      if (p) {
+        annualPrice.textContent = fmtPrice(p.amountMicros, p.currency)
+
+        const annualMicros  = p.amountMicros
+        const annualPerMonth = annualMicros / 12
+        let periodHtml = 'per year'
+
+        if (monthlyPkg?.webBillingProduct?.currentPrice) {
+          const monthlyMicros = monthlyPkg.webBillingProduct.currentPrice.amountMicros
+          if (monthlyMicros > 0) {
+            const savePct = Math.round((1 - annualPerMonth / monthlyMicros) * 100)
+            if (savePct > 0) {
+              periodHtml += ` &nbsp;<span class="save-badge">Save ${savePct}%</span>`
+            }
+          }
+          const equiv = fmtPrice(annualPerMonth, p.currency)
+          periodHtml += `<br><span style="font-size:.75rem;color:var(--ink-faint)">$${equiv} / month</span>`
+        }
+
+        annualPeriod.innerHTML = periodHtml
+        btnAnnual.disabled = false
+      }
+    }
+
+    showCards()
+
+    btnMonthly.addEventListener('click', () => void purchase(purchases, monthlyPkg))
+    btnAnnual.addEventListener('click',  () => void purchase(purchases, annualPkg))
+  }
+
+  async function purchase(purchases, pkg) {
+    if (!pkg) return
+    clearError()
+    setPurchasing(true)
+    try {
+      await purchases.purchase({ rcPackage: pkg })
+      showSuccess()
+    } catch (err) {
+      // User closed the Paddle overlay — treat as cancellation, not an error
+      if (err?.errorCode === 'PURCHASE_CANCELLED') {
+        setPurchasing(false)
+        return
+      }
+      console.error('[upgrade] purchase failed', err)
+      showError(err?.message ?? 'Purchase failed. Please try again.')
+      setPurchasing(false)
+    }
+  }
+
+  init().catch((err) => {
+    console.error('[upgrade] init error', err)
+    showError('Something went wrong. Please refresh and try again.')
+    showCards()
+  })
+</script>
+
+</body>
+</html>
